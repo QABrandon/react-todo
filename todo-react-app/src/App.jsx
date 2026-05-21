@@ -1,13 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import AddTodo from "./components/AddTodo";
 import TodoFilters from "./components/TodoFilters";
 import TodoList from "./components/TodoList";
 
+const STORAGE_KEY = "reactTodoTodos";
+
+function loadTodosFromStorage() {
+  const storedTodos = localStorage.getItem(STORAGE_KEY);
+
+  if (!storedTodos) {
+    return [];
+  }
+
+  try {
+    const parsedTodos = JSON.parse(storedTodos);
+    return Array.isArray(parsedTodos) ? parsedTodos : [];
+  } catch {
+    return [];
+  }
+}
+
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => loadTodosFromStorage());
   const [inputText, setInputText] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+  }, [todos]);
 
   const handleInputChange = (event) => {
     setInputText(event.target.value);
