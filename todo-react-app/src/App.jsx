@@ -44,6 +44,20 @@ function App() {
     setInputText("");
   };
 
+  const handleToggleTodo = (id) => {
+    setTodos((previousTodos) =>
+      previousTodos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  };
+
+  const handleDeleteTodo = (id) => {
+    setTodos((previousTodos) =>
+      previousTodos.filter((todo) => todo.id !== id)
+    );
+  };
+
   return (
     <>
       <header>
@@ -57,7 +71,11 @@ function App() {
           errorMessage={errorMessage}
         />
         <TodoFilters />
-        <TodoList todos={todos} />
+        <TodoList
+          todos={todos}
+          onToggle={handleToggleTodo}
+          onDelete={handleDeleteTodo}
+        />
       </main>
     </>
   );
