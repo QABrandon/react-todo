@@ -25,6 +25,7 @@ function App() {
   const [todos, setTodos] = useState(() => loadTodosFromStorage());
   const [inputText, setInputText] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [filter, setFilter] = useState("all");
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
@@ -79,6 +80,19 @@ function App() {
     );
   };
 
+  const activeCount = todos.filter((todo) => !todo.completed).length;
+  const completedCount = todos.filter((todo) => todo.completed).length;
+
+  const filteredTodos = todos.filter((todo) => {
+    if (filter === "active") {
+      return !todo.completed;
+    }
+    if (filter === "completed") {
+      return todo.completed;
+    }
+    return true;
+  });
+
   return (
     <>
       <header>
@@ -91,11 +105,18 @@ function App() {
           onSubmit={handleFormSubmit}
           errorMessage={errorMessage}
         />
-        <TodoFilters />
+        <TodoFilters
+          filter={filter}
+          onFilterChange={setFilter}
+          allCount={todos.length}
+          activeCount={activeCount}
+          completedCount={completedCount}
+        />
         <TodoList
-          todos={todos}
+          todos={filteredTodos}
           onToggle={handleToggleTodo}
           onDelete={handleDeleteTodo}
+          showEmptyMessage={todos.length === 0}
         />
       </main>
     </>
