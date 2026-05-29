@@ -2,7 +2,7 @@
 
 A todo list application built with React and Vite for FS12 Week 9 Session 3. It reimplements the Week 7 vanilla JavaScript todo app using React components, state, and event handling.
 
-**Note:** Day-to-day development happens in `full-stack-2026/portfolio/major-03-react-todo/`. This `todo-react-app/` folder is the class submission copy for [react-todo](https://github.com/QABrandon/react-todo). Minor 03 on the portfolio is the vanilla JavaScript version.
+**Note:** Day-to-day development happens in `full-stack-2026/portfolio/minor-04-react-todo/`. This `todo-react-app/` folder is the class submission copy for [react-todo](https://github.com/QABrandon/react-todo). Minor 03 on the portfolio is the vanilla JavaScript version.
 
 ## Features
 
