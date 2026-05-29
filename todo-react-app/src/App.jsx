@@ -96,7 +96,13 @@ function App() {
   return (
     <>
       <header>
+        <a className="home-link" href="/">
+          Back to portfolio home
+        </a>
         <h1>React Todo List</h1>
+        <p className="header-note">
+          FS12 Week 9 Session 3 — React rebuild of the Week 7 todo app
+        </p>
       </header>
       <main>
         <AddTodo

@@ -5,6 +5,26 @@ header {
   margin-bottom: 40px;
 }
 
+.home-link {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-shadow: 0 2px 4px #0000001a;
+}
+
+.home-link:hover {
+  text-decoration: underline;
+}
+
+.header-note {
+  margin-top: 8px;
+  color: #ffffffcc;
+  font-size: 1rem;
+}
+
 header h1 {
   color: #ffffff;
   font-size: 3rem;
